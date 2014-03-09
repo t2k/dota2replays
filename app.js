@@ -3,7 +3,7 @@
 /*
 Module dependencies.
  */
-var app, express, http, path, util;
+var app, config, express, http, path, util;
 
 express = require("express");
 
@@ -36,6 +36,8 @@ app.use(express.session());
 app.use(app.router);
 
 app.use(express["static"]('./public'));
+
+config = require('./config.json')[app.get('env')];
 
 if ("development" === app.get("env")) {
   app.use(express.errorHandler());

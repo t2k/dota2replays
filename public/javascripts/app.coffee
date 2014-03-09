@@ -2,7 +2,7 @@
 define ["msgbus", "backbone", "apps/load" ], (msgBus, Backbone  ) ->
     app = new Backbone.Marionette.Application()
 
-    app.rootRoute = "upload"
+    app.rootRoute = "intro"
 
     app.addRegions
         headerRegion: "#header-region"
@@ -29,6 +29,7 @@ define ["msgbus", "backbone", "apps/load" ], (msgBus, Backbone  ) ->
 
     # configure for loading templates that are stored externally...
     app.addInitializer (options) ->
+        msgBus.commands.execute "start:intro:app"
         msgBus.commands.execute "start:header:app"
         msgBus.commands.execute "start:upload:app"
         msgBus.commands.execute "start:about:app"

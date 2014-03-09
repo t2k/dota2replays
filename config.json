@@ -1,0 +1,14 @@
+{
+	"development" : {
+		"domain" : "localhost",
+		"APIKEY" : "1808DA18F88164A7D46211B9FF3947D9"
+	},
+	"production" : {
+
+	}
+
+}
+
+
+
+    

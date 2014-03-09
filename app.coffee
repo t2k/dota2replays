@@ -8,6 +8,7 @@ express = require("express")
 http = require("http")
 path = require("path")
 util = require "util"
+#config = require "./config"
 app = express()
 
 # all environments
@@ -23,6 +24,10 @@ app.use express.cookieParser("your secret here")
 app.use express.session()
 app.use app.router
 app.use express.static('./public')
+
+#api key
+
+config = require('./config.json')[app.get('env')]
 
 
 # development only

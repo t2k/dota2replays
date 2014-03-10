@@ -17,9 +17,9 @@ define ["backbone", "msgbus"], (Backbone, msgBus ) ->
             handler: "/upload"
             queueSizeLimit:1
             fileDataName: "fileData"
-            maxFileSize: 1024*1000
-            maxTotalFileSize: 1024*1000
-            mimeTypes: "plain/text,image/png"
+            maxFileSize: 1024*1000*20
+            maxTotalFileSize: 1024*1000*20
+            mimeTypes: "*"
 
     class FileModel extends Backbone.Model
         sync: (method, model, options) ->
@@ -47,18 +47,17 @@ define ["backbone", "msgbus"], (Backbone, msgBus ) ->
         initialize: (models, options={})->
             @settings = _.extend(
                 currentUploadedFileId: 0
-                action: "none"
+                action: "NA"
                 handler: "/upload"
                 queueSizeLimit: 1
                 fileDataName: "fileData"
-                maxFileSize: 1024*1000
-                maxTotalSize: 1024*1000
-                mimeTypes: "image/png, image/jpg"
+                maxFileSize: 1024*1000*100
+                maxTotalSize: 1024*1000*100
+                mimeTypes: ""
                 , options)
 
             @mimeTypes = @settings.mimeTypes.split(",")
             @url = @settings.handler  # collections url for save/post
-
 
             msgBus.reqres.setHandler "fu:addToQueue", (input) =>
                 @addFile input

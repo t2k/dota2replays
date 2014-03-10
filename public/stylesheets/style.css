@@ -43,7 +43,18 @@ a {
   font-size: 21px;
 }
 
+#steambtn {
+	margin-top: 90px;
+	margin-right: 80px;
+	margin-left: 250px;
+	font-size: 18px;
+	padding: 10px 10px 10px;
+	text-align: center;
+}
+
 /* Supporting marketing grid content and what not */
+/* this is useless but i'll leave it for now in case */
+
 .marketing {
   margin: 40px 0;
 }

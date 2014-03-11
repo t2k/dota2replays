@@ -3,8 +3,8 @@ Module dependencies.
 ###
 
 express = require "express"
-#routes = require("./routes")
-#user = require("./routes/user")
+routes = require "./routes"  # will look for index.js by default
+
 http = require "http"
 path = require "path"
 util = require "util"
@@ -34,27 +34,10 @@ app.use express.errorHandler()  if "development" is app.get "env"
 
 # routing
 # INDEX ROUTE, render a JADE view
-app.get "/", (req,res)->
-    res.render 'index'
+app.get "/", routes.index
+app.post "/upload", routes.upload
 
-app.post "/upload", (req,res)->
-    multiparty = require 'multiparty'
-    form = new multiparty.Form
-        autoFiles: true
-        uploadDir: "./tempUploads"
-        
-    form.parse req, (err, fields, files) ->
-        if err
-            res.writeHead 500,
-                "content-type": "text/plain"
-            res.send "ERROR: uploading\n\n"
-
-        console.log "upload handled", fields, files
-        res.json util.inspect(
-            message: "upload complete"
-            fields: fields
-            files: files
-        )
-        ## create server
+## create server
 http.createServer(app).listen app.get("port"), ->
   console.log "Express server listening on port=#{app.get('port')} environment=#{app.get('env')} apikey=#{config.APIKEY}"
+  

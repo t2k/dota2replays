@@ -43,13 +43,20 @@ a {
   font-size: 21px;
 }
 
+/* could fix this maybe.. just moving btn */
+
 #steambtn {
-	margin-top: 90px;
-	margin-right: 80px;
-	margin-left: 250px;
+	margin-top: 80px;
+	margin-right: 100px;
+	margin-left: 270px;
 	font-size: 18px;
 	padding: 10px 10px 10px;
 	text-align: center;
+}
+
+#carousel {
+	margin-top: 20px;
+	margin-bottom: 30px;
 }
 
 /* Supporting marketing grid content and what not */
